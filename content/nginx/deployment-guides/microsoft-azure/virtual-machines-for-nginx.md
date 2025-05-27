@@ -19,7 +19,6 @@ For NGINX Plus, a faster alternative is to purchase a prebuilt VM in the [Micros
 <span id="prereqs"></span>
 ## Prerequisites
 
-These instructions assume you have:
 
 - An Azure [account](https://azure.microsoft.com/en-us/free/).
 - An Azure [subscription](https://docs.microsoft.com/en-us/azure/azure-glossary-cloud-terminology?toc=/azure/virtual-network/toc.json#subscription).
