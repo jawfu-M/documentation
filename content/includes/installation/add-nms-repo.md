@@ -1,5 +1,7 @@
 ---
 nd-docs: DOCS-1243
+nd-files:
+- content/nim/deploy/vm-bare-metal/install-nim-manual.md
 ---
 
 Select the tab matching your Linux distribution, then follow the instructions to add the NGINX Instance Manager repository.
@@ -24,6 +26,11 @@ Add the NGINX Instance Manager repository:
     ```bash
     sudo yum module disable nginx:1.14
     sudo yum module enable nginx:1.20
+    ```
+  - **RHEL 9**: If you're installing NGINX Open Source package from the yum repository on RHEL 9, run the following commands to use the new version of NGINX Open Source (1.20 at the time of this update):
+
+    ```bash
+    sudo yum install nginx-1.20.*
     ```
 
 - **Amazon Linux 2**

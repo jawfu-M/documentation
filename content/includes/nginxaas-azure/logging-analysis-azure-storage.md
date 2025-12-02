@@ -1,5 +1,9 @@
 ---
-nd-docs: "DOCS-000"
+nd-docs: DOCS-000
+nd-files:
+- content/nginxaas-azure/monitoring/enable-logging/logging-using-cli.md
+- content/nginxaas-azure/monitoring/enable-logging/logging-using-portal.md
+- content/nginxaas-azure/monitoring/enable-logging/logging-using-terraform.md
 ---
 
 If the diagnostic setting destination details included a storage account, logs show up in the storage container "insights-logs-nginxlogs" with the following format: `resourceID=/<NGINXaaS-resourceID>/y=<YYYY>/m=<MM>/d=<DD>/h=<HH>/PT1H.json`
@@ -14,7 +18,7 @@ If the diagnostic setting destination details included a storage account, logs s
 | `<HH>`                      | The two-digit hour value that indicates the starting hour for the log batch, in 24 hour UTC format|
 {{</bootstrap-table>}}
 
-{{<note>}}It can take up to 90 minutes after adding diagnostic settings for logs to appear in the provided Azure Storage container.{{</note>}}
+{{< call-out "note" >}}It can take up to 90 minutes after adding diagnostic settings for logs to appear in the provided Azure Storage container.{{< /call-out >}}
 
 Each log event in the "PT1H.json" file is written in a new line delimited JSON text format. The properties that show up in each log line are described in the [Top Level Common Schema](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-schema#top-level-common-schema) documentation.
 

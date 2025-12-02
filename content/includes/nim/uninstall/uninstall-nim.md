@@ -1,12 +1,14 @@
 ---
-docs:
+nd-files:
+- content/nim/deploy/vm-bare-metal/install.md
+- content/nim/disconnected/offline-install-guide.md
 ---
 
 Follow the steps below to uninstall NGINX Instance Manager and ClickHouse.
 
 - **For CentOS, RHEL, and RPM-based distributions:**
 
-   ```bash
+   ```shell
    sudo yum remove -y nms-*
    sudo systemctl stop clickhouse-server
    sudo yum remove -y clickhouse-server
@@ -14,7 +16,7 @@ Follow the steps below to uninstall NGINX Instance Manager and ClickHouse.
 
 - **For Debian, Ubuntu, and Deb-based distributions:**
 
-   ``` bash
+   ```shell
    sudo apt-get remove -y nms-*
    sudo systemctl stop clickhouse-server
    sudo apt-get remove -y clickhouse-server

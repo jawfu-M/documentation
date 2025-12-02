@@ -1,10 +1,10 @@
 ---
-nd-docs: DOCS-588
-doctypes:
-- ''
 title: GlobalConfiguration resource
 toc: true
 weight: 200
+nd-content-type: reference
+nd-product: INGRESS
+nd-docs: DOCS-588
 ---
 
 This page explains how to use the GlobalConfiguration resource to define the global configuration parameters of F5 NGINX Ingress Controller.
@@ -13,13 +13,9 @@ The resource supports configuring listeners for TCP and UDP load balancing, and 
 
 Listeners are required by [TransportServer resources]({{< ref "/nic/configuration/transportserver-resource.md" >}}) and can be used to [configure custom listeners for VirtualServers]({{< ref "/nic/tutorials/virtual-server-with-custom-listener-ports.md" >}}).
 
----
-
 ## Prerequisites
 
-When [installing NGINX Ingress Controller using Manifests]({{< ref "/nic/installation/installing-nic/installation-with-manifests.md" >}}), you need to reference a GlobalConfiguration resource in the [`-global-configuration`]({{< ref "/nic/configuration/global-configuration/command-line-arguments.md#cmdoption-global-configuration" >}}) command-line argument. NGINX Ingress Controller only needs one GlobalConfiguration resource.
-
----
+When [installing NGINX Ingress Controller using Manifests]({{< ref "/nic/install/manifests.md" >}}), you need to reference a GlobalConfiguration resource in the [`-global-configuration`]({{< ref "/nic/configuration/global-configuration/command-line-arguments.md#cmdoption-global-configuration" >}}) command-line argument. NGINX Ingress Controller only needs one GlobalConfiguration resource.
 
 ## GlobalConfiguration specification
 
@@ -48,11 +44,9 @@ spec:
     ssl: true
 ```
 
-{{<bootstrap-table "table table-striped table-bordered table-responsive">}}
 |Field | Description | Type | Required |
 | ---| ---| ---| --- |
 | *listeners* | A list of listeners. | [listener](#listener) | No |
-{{</bootstrap-table>}}
 
 ### Listener
 
@@ -67,7 +61,6 @@ The `listeners:` key defines a listener (a combination of a protocol and a port)
   protocol: HTTP
 ```
 
-{{<bootstrap-table "table table-striped table-bordered table-responsive">}}
 |Field | Description | Type | Required |
 | ---| ---| ---| --- |
 | *name* | The name of the listener. Must be a valid DNS label as defined in RFC 1035. For example, ``hello`` and ``listener-123`` are valid. The name must be unique among all listeners. The name ``tls-passthrough`` is reserved for the built-in TLS Passthrough listener and cannot be used. | *string* | Yes |
@@ -76,10 +69,6 @@ The `listeners:` key defines a listener (a combination of a protocol and a port)
 | *ssl* | Configures the listener with SSL. This is currently only supported for ``HTTP`` listeners. Default value is ``false`` | *bool* | No |
 | *ipv4* | Specifies the IPv4 address to listen on. | *string* | No |
 | *ipv6* | Specifies the IPv6 address to listen on. | *string* | No |
-
-{{</bootstrap-table>}}
-
----
 
 ## Using GlobalConfiguration
 
@@ -90,6 +79,7 @@ For example, the following command creates a GlobalConfiguration resource define
 ```shell
 kubectl apply -f global-configuration.yaml
 ```
+
 ```shell
 globalconfiguration.k8s.nginx.org/nginx-configuration created
 ```
@@ -99,6 +89,7 @@ Assuming the namespace of the resource is `nginx-ingress`, you can get the resou
 ```shell
 kubectl get globalconfiguration nginx-configuration -n nginx-ingress
 ```
+
 ```shell
 NAME                  AGE
 nginx-configuration   13s
@@ -115,7 +106,6 @@ Two types of validation are available for the GlobalConfiguration resource:
 - *Structural validation* by `kubectl` and Kubernetes API server.
 - *Comprehensive validation* by NGINX Ingress Controller.
 
-
 #### Structural validation
 
 The custom resource definition for the GlobalConfiguration includes structural OpenAPI schema which describes the type of every field of the resource.
@@ -127,6 +117,7 @@ If you try to create (or update) a resource that violates the structural schema 
     ```shell
     kubectl apply -f global-configuration.yaml
     ```
+
     ```text
     error: error validating "global-configuration.yaml": error validating data: ValidationError(GlobalConfiguration.spec.listeners[0].port): invalid type for org.nginx.k8s.v1.GlobalConfiguration.spec.listeners.port: got "string", expected "integer"; if you choose to ignore these errors, turn validation off with --validate=false
     ```
@@ -136,6 +127,7 @@ If you try to create (or update) a resource that violates the structural schema 
     ```shell
     kubectl apply -f global-configuration.yaml --validate=false
     ```
+
     ```text
     The GlobalConfiguration "nginx-configuration" is invalid: []: Invalid value: map[string]interface {}{ ... }: validation failure list:
     spec.listeners.port in body must be of type integer: "string"
@@ -152,6 +144,7 @@ You can check if the Ingress Controller successfully applied the configuration f
 ```shell
 kubectl describe gc nginx-configuration -n nginx-ingress
 ```
+
 ```text
 ...
 Events:
@@ -167,6 +160,7 @@ If you create a GlobalConfiguration `nginx-configuration` with two or more liste
 ```shell
 kubectl describe gc nginx-configuration -n nginx-ingress
 ```
+
 ```text
 Events:
   Type     Reason    Age   From                      Message
@@ -176,7 +170,6 @@ Events:
 ```
 
 The events section includes a Warning event with the AddedOrUpdatedWithError reason.
-
 
 ## Using IPV4 and IPV6 Addresses with GlobalConfiguration
 

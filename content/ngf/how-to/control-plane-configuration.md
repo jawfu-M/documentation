@@ -3,7 +3,7 @@ title: Control plane configuration
 weight: 400
 toc: true
 type: how-to
-product: NGF
+nd-product: FABRIC
 nd-docs: DOCS-1839
 ---
 
@@ -30,7 +30,7 @@ Additionally, the control plane updates the status of the resource (if it exists
 
 ## Viewing and Updating the Configuration
 
-{{< note >}} For the following examples, the name `ngf-config` should be updated to the name of the resource created for your installation.{{< /note >}}
+{{< call-out "note" >}} For the following examples, the name `ngf-config` should be updated to the name of the resource created for your installation.{{< /call-out >}}
 
 To view the current configuration and its status:
 

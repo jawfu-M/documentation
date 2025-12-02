@@ -1,5 +1,6 @@
 ---
-docs:
+nd-files:
+- content/nap-dos/deployment-guide/learn-about-deployment.md
 ---
 
 Create the **/etc/nginx/** directory for the JWT license file:

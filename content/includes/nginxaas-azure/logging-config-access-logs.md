@@ -1,5 +1,9 @@
 ---
-nd-docs: "DOCS-000"
+nd-docs: DOCS-000
+nd-files:
+- content/nginxaas-azure/monitoring/enable-logging/logging-using-cli.md
+- content/nginxaas-azure/monitoring/enable-logging/logging-using-portal.md
+- content/nginxaas-azure/monitoring/enable-logging/logging-using-terraform.md
 ---
 
 NGINX access logs are disabled by default. You can enable access logs by adding **access_log** directives to your NGINX configuration to specify the location of the logs and formats. The log path should always be configured to be inside **/var/log/nginx**.
@@ -15,7 +19,7 @@ http {
 }
 ```
 
-{{<note>}} The **$time_local** variable includes the date and time for each log. It helps with ordering logs after export. {{</note>}}
+{{< call-out "note" >}} The **$time_local** variable includes the date and time for each log. It helps with ordering logs after export. {{< /call-out >}}
 
 To explicitly disable access logs, apply the following config:
 
@@ -35,5 +39,5 @@ http {
 
 To learn more about how to specify `access__log` in different configuration levels and their effect, see [access_log](https://nginx.org/en/docs/http/ngx_http_log_module.html#access_log)
 
-{{<warning>}}Unless you use **syslog**, keep NGINX logs in the **/var/log/nginx** directory. Otherwise, you may lose data from your logs.
-{{</warning>}}
+{{< call-out "warning" >}}Unless you use **syslog**, keep NGINX logs in the **/var/log/nginx** directory. Otherwise, you may lose data from your logs.
+{{< /call-out >}}

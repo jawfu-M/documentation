@@ -1,11 +1,14 @@
 ---
 nd-docs: DOCS-1324
+nd-files:
+- content/nim/deploy/kubernetes/deploy-using-helm.md
 ---
 
 {{<bootstrap-table "table table-striped table-bordered">}}
 
 | NGINX Instance Manager chart | Chart                      | Instance Manager |
 |------------------------------|----------------------------|------------------|
+| 2.1.0                        | nginx-stable/nim           | 2.21.0           |
 | 2.0.0                        | nginx-stable/nim           | 2.20.0           |
 | 2.19.2                       | nginx-stable/nms-hybrid    | 2.19.2           |
 | 2.19.1                       | nginx-stable/nms-hybrid    | 2.19.1           |

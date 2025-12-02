@@ -3,7 +3,7 @@ title: Troubleshooting
 toc: true
 weight: 600
 nd-content-type: how-to
-nd-product: NGF
+nd-product: FABRIC
 nd-docs: DOCS-1419
 ---
 
@@ -79,9 +79,9 @@ kubectl exec -it -n <nginx-pod-namespace> <nginx-pod-name> -- /bin/sh
 
 Logs from the NGINX Gateway Fabric control plane and data plane can contain information that isn't available to status or events. These can include errors in processing or passing traffic.
 
-{{< note >}}
+{{< call-out "note" >}}
 You can see logs for a crashed or killed container by adding the `-p` flag to the `kubectl logs` commands below.
-{{< /note >}}
+{{< /call-out >}}
 
 1. Container Logs
 
@@ -268,9 +268,9 @@ Handling connection for 8080
 </body>
 ```
 
-{{< warning >}}
+{{< call-out "warning" >}}
 The configuration may change in future releases. This configuration is valid for version 1.3.
-{{< /warning >}}
+{{< /call-out >}}
 
 #### Metrics for troubleshooting
 
@@ -283,8 +283,6 @@ Verify that the port number (for example, `8080`) matches the port number you ha
 
 ### Common errors
 
-{{< bootstrap-table "table table-striped table-bordered" >}}
-
 | Problem Area | Symptom | Troubleshooting Method | Common Cause |
 |------------------------------|----------------------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | Startup | NGINX Gateway Fabric fails to start. | Check logs for _nginx_ and _nginx-gateway_ containers. | Readiness probe failed. |
@@ -292,8 +290,6 @@ Verify that the port number (for example, `8080`) matches the port number you ha
 | NGINX errors | Reload failures on NGINX | Fix permissions for control plane. | Security context not configured. |
 | NGINX Plus errors | Failure to start; traffic interruptions | Set up the [NGINX Plus JWT]({{< ref "/ngf/install/nginx-plus.md" >}}) | License is not configured or has expired. |
 | Client Settings | Request entity too large error | Adjust client settings. Refer to [Client Settings Policy]({{< ref "/ngf/traffic-management/client-settings.md" >}}) | Payload is greater than the [`client_max_body_size`](https://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size) value.|
-
-{{< /bootstrap-table >}}
 
 ##### NGINX fails to reload
 
@@ -511,6 +507,21 @@ It indicates that `proxy_protocol` is enabled for the gateway listeners, but the
 - Unassign the field [`rewriteClientIP.mode`]({{< ref "/ngf/reference/api.md" >}}) in the NginxProxy configuration.
 
 - Send valid proxy information with requests being handled by your application.
+
+#### Custom Resource Definition is invalid due to being too large 
+
+If you apply the NGINX Gateway Fabric CRDs and see the following error:
+
+```text
+The CustomResourceDefinition "nginxproxies.gateway.nginx.org" is invalid: metadata.annotations: Too long: may not be more than 262144 bytes
+```
+
+This is a known issue with Kubernetes, more specifically the client-side-apply annotation limit with kubectl, and our recommended workaround 
+is to use kubectl's server-side apply when installing the NGINX Gateway Fabric CRDs. To do this, you can use the `--server-side` flag when applying the CRDs:
+
+```shell
+kubectl apply --server-side -f https://raw.githubusercontent.com/nginx/nginx-gateway-fabric/v{{< version-ngf >}}/deploy/crds.yaml
+```
 
 ### See also
 

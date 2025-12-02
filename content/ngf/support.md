@@ -3,7 +3,7 @@ title: Support
 weight: 800
 toc: true
 nd-content-type: reference
-nd-product: NGF
+nd-product: FABRIC
 nd-docs: DOCS-1411
 ---
 
@@ -38,4 +38,4 @@ Visit the [project’s GitHub repository](https://github.com/nginx/nginx-support
 
 - You can also get help through the [NGINX Community Forum](https://community.nginx.org/).
 
-- If you need dedicated support for NGINX Gateway Fabric, or you would like to leverage our [advanced NGINX Plus features](https://docs.nginx.com/nginx-gateway-fabric/overview/nginx-plus/), you can contact [F5 Sales](https://www.f5.com/content/f5-com/en_us/products/get-f5).
+- If you need dedicated support for NGINX Gateway Fabric, or you would like to leverage our [advanced NGINX Plus features](https://docs.nginx.com/nginx-gateway-fabric/overview/nginx-plus/), you can contact [F5 Sales](https://www.f5.com/products/get-f5).

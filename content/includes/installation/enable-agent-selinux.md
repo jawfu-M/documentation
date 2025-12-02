@@ -1,9 +1,7 @@
 ---
-docs:
-files:
-   - content/nginx-one/agent/configure-instance-reporting/configure-selinux.md
-   - content/nim/system-configuration/configure-selinux.md
-   - content/nms/nginx-agent/install-nginx-agent.md
+nd-files:
+- content/nginx-one-console/agent/configure-instances/configure-selinux.md
+- content/nim/system-configuration/configure-selinux.md
 ---
 
 The following SELinux files are added when you install the NGINX Agent package:

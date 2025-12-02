@@ -1,9 +1,9 @@
 ---
-title: Status Page
+title: View the NGINX status page
 toc: true
-weight: 1900
+weight: 200
 nd-content-type: how-to
-nd-product: NIC
+nd-product: INGRESS
 nd-docs: DOCS-615
 ---
 
@@ -13,7 +13,7 @@ NGINX comes with a status page that reports basic metrics about NGINX called the
 
 NGINX Plus comes with a [dashboard]({{< ref "/nginx/admin-guide/monitoring/live-activity-monitoring.md" >}}) that reports key load-balancing and performance metrics.
 
-NGINX App Protect DoS comes with a [dashboard]({{< ref "/nap-dos/monitoring/live-activity-monitoring.md" >}}) that shows the status and information of the protected objects.
+F5 DoS for NGINX comes with a [dashboard]({{< ref "/nap-dos/monitoring/live-activity-monitoring.md" >}}) that shows the status and information of the protected objects.
 This doc shows how to get access to the stub status/dashboard.
 
 ## Accessing Stub Status

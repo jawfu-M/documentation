@@ -1,8 +1,7 @@
 ---
-docs:
-files:
-   - content/agent/install-upgrade/install-from-oss-repo.md
-   - content/nginx-one/agent/install-upgrade/install-from-oss-repo.md
+nd-product: NAGENT
+nd-files:
+- content/nginx-one-console/agent/install-upgrade/install-from-oss-repo.md
 ---
 
 1. Install the prerequisites:
@@ -35,7 +34,7 @@ files:
    uid                      nginx signing key <signing-key@nginx.com>
    ```
 
-   {{< important >}}If the fingerprint is different, remove the file.{{< /important >}}
+   {{< call-out "important" >}}If the fingerprint is different, remove the file.{{< /call-out >}}
 
 1. Add the `nginx-agent` repository:
 

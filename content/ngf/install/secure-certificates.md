@@ -3,7 +3,7 @@ title: Add certificates for secure authentication
 weight: 100
 toc: true
 nd-content-type: how-to
-nd-product: NGF
+nd-product: FABRIC
 nd-docs: DOCS-1851
 ---
 
@@ -13,11 +13,11 @@ However, because these certificates are self-signed and will expire after 3 year
 
 This guide will step through how to install and use `cert-manager` to secure this connection.
 
-{{< caution >}}
+{{< call-out "caution"  >}}
 
 These steps should be completed before you install NGINX Gateway Fabric.
 
-{{< /caution >}}
+{{< /call-out >}}
 
 ---
 
@@ -27,6 +27,12 @@ To complete this guide, you will need the following prerequisites:
 
 - Administrator access to a Kubernetes cluster.
 - [Helm](https://helm.sh) and [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) must be installed locally.
+
+## Install Gateway API CRDs
+
+```shell
+kubectl kustomize "https://github.com/nginx/nginx-gateway-fabric/config/crd/gateway-api/standard?ref=v{{< version-ngf >}}" | kubectl apply -f -
+```
 
 ## Install cert-manager
 
@@ -56,7 +62,7 @@ This also enables Gateway API features for cert-manager, which can be useful for
 
 The first step is to create the CA (certificate authority) issuer.
 
-{{< note >}} This example uses a self-signed Issuer, which should not be used in production environments. For production environments, you should use a real [CA issuer](https://cert-manager.io/docs/configuration/ca/). {{< /note >}}
+{{< call-out "note" >}} This example uses a self-signed Issuer, which should not be used in production environments. For production environments, you should use a real [CA issuer](https://cert-manager.io/docs/configuration/ca/). {{< /call-out >}}
 
 Create the namespace:
 

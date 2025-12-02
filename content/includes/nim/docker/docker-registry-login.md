@@ -1,5 +1,7 @@
 ---
-nd-docs: "DOCS-1666"
+nd-docs: DOCS-1666
+nd-files:
+- content/nim/deploy/docker/deploy-nginx-instance-manager-docker-compose.md
 ---
 
 1. Download your NGINX Instance Manager subscription's JSON Web Token from MyF5. You can use the same JSON Web Token as NGINX Plus in your MyF5 portal.
@@ -12,7 +14,7 @@ nd-docs: "DOCS-1666"
 
 2. Log in to the Docker registry using the contents of the JSON Web Token file:
 
-   ```bash
+   ```shell
    docker login private-registry.nginx.com --username=<JWT_CONTENTS> --password=none
    ```
 

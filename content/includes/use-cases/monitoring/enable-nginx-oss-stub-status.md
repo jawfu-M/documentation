@@ -1,8 +1,10 @@
 ---
-docs:
-files:
-  - content/nim/monitoring/overview-metrics.md
-  - content/nginx-one/getting-started.md  
+nd-product: MSC
+nd-files:
+- content/nginx-one-console/getting-started.md
+- content/nginx-one-console/nginx-configs/metrics/enable-metrics.md
+- content/nim/monitoring/overview-metrics.md
+- content/nim/nginx-instances/add-instance.md
 ---
 
 To collect basic metrics about server activity for NGINX Open Source, add the following to your NGINX configuration file:
@@ -25,9 +27,3 @@ This configuration:
 - Blocks all other requests for security.
 
 For more details, see the [NGINX Stub Status module documentation](https://nginx.org/en/docs/http/ngx_http_stub_status_module.html).
-
-After saving the changes, reload NGINX to apply the new configuration:
-
-```shell
-nginx -s reload
-```

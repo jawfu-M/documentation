@@ -3,7 +3,7 @@ title: Deploy a Gateway for data plane instances
 weight: 600
 toc: true
 nd-content-type: how-to
-nd-product: NGF
+nd-product: FABRIC
 nd-docs: DOCS-1854
 ---
 
@@ -13,7 +13,7 @@ This document describes how to use a Gateway to deploy the NGINX data plane, and
 
 [A Gateway](https://gateway-api.sigs.k8s.io/concepts/api-overview/#gateway) is used to manage all inbound requests, and is a key Gateway API resource.
 
-When a Gateway is attached to a GatewayClass associated with NGINX Gateway Fabric, it creates a Service and an NGINX deployment. This forms the NGINX data plane, handling requests.
+When a Gateway is attached to a GatewayClass associated with NGINX Gateway Fabric, it creates a Service and an NGINX deployment in the same namespace as the Gateway. This forms the NGINX data plane, handling requests.
 
 A single GatewayClass can have multiple Gateways: each Gateway will create a separate Service and NGINX deployment.
 
@@ -93,16 +93,16 @@ kubectl get services
 ```
 ```text
 NAME         TYPE            CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
-cafe-nginx   LoadBalancer    10.96.125.117   <pending>     80:30180/TCP   5m2s
+cafe-nginx   LoadBalancer    10.96.125.117   192.0.2.1   80:30180/TCP   5m2s
 ```
 
-The Service type can be changed, as explained in the next section.
+The Service type can be changed, as explained in the next section. NGINX Gateway Fabric uses the created Service to update the **Addresses** field in the **Gateway Status** resource. Using a **LoadBalancer** Service sets this field to the IP address and/or hostname of that service. Without a Service, the pod IP address is used.
 
 ## Modify provisioned NGINX instances
 
 The NginxProxy custom resource can modify the provisioning of the Service object and NGINX deployment when a Gateway is created.
 
-{{< note >}} Updating most Kubernetes related fields in NginxProxy will trigger a restart of the related resources. {{< /note >}}
+{{< call-out "note" >}} Updating most Kubernetes related fields in NginxProxy will trigger a restart of the related resources. {{< /call-out >}}
 
 An NginxProxy resource is created by default after deploying NGINX Gateway Fabric. This NginxProxy resource is attached to the GatewayClass (created on NGINX Gateway Fabric installation), and
 its settings are applied globally to all Gateways.
@@ -159,8 +159,8 @@ Under `Spec.Kubernetes` you can see a few things:
 - How many NGINX Deployment replicas are specified
 - The type of Service and external traffic policy
 
-{{< note >}} Depending on installation configuration, the default NginxProxy settings may be slightly different from what is shown in the example.
-For more information on NginxProxy and its configurable fields, see the [API reference]({{< ref "/ngf/reference/api.md" >}}). {{< /note >}}
+{{< call-out "note" >}} Depending on installation configuration, the default NginxProxy settings may be slightly different from what is shown in the example.
+For more information on NginxProxy and its configurable fields, see the [API reference]({{< ref "/ngf/reference/api.md" >}}). {{< /call-out >}}
 
 Modify the NginxProxy resource to change the type of Service.
 
@@ -170,7 +170,7 @@ Use `kubectl edit` to modify the default NginxProxy and insert the following und
 type: NodePort
 ```
 
-After saving the changes, use `kubectl get` on the service, and you should see the service type has changed to `LoadBalancer`.
+After saving the changes, use `kubectl get` on the service, and you should see the service type has changed to `NodePort`.
 
 ```shell
 kubectl get service cafe-nginx

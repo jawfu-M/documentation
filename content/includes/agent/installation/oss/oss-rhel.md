@@ -1,8 +1,7 @@
 ---
-docs:
-files:
-   - content/agent/install-upgrade/install-from-oss-repo.md
-   - content/nginx-one/agent/install-upgrade/install-from-oss-repo.md
+nd-product: NAGENT
+nd-files:
+- content/nginx-one-console/agent/install-upgrade/install-from-oss-repo.md
 ---
 
 1. Install the prerequisites:

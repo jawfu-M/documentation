@@ -3,7 +3,7 @@ title: Modify HTTP request and response headers
 weight: 600
 toc: true
 nd-content-type: how-to
-nd-product: NGF
+nd-product: FABRIC
 nd-docs: DOCS-1849
 ---
 
@@ -51,11 +51,11 @@ GW_IP=XXX.YYY.ZZZ.III
 GW_PORT=<port number>
 ```
 
-{{< note >}}
+{{< call-out "note" >}}
 
 In a production environment, you should have a DNS record for the external IP address that is exposed, and it should refer to the hostname that the gateway will forward for.
 
-{{< /note >}}
+{{< /call-out >}}
 
 ## RequestHeaderModifier example
 

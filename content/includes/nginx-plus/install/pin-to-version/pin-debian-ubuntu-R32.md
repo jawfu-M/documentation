@@ -1,5 +1,7 @@
 ---
 nd-docs: DOCS-000
+nd-files:
+- content/nginx/admin-guide/installing-nginx/installing-nginx-plus.md
 ---
 
 To pin NGINX Plus to a specific version (for example, R33):
@@ -8,16 +10,14 @@ To pin NGINX Plus to a specific version (for example, R33):
 1. Update the repository base URL to the desired version:
 
    - **For Ubuntu**:
-
-      ```shell
-      https://pkgs.nginx.com/plus/R33/ubuntu
-      ```
+     ```shell
+     https://pkgs.nginx.com/plus/R33/ubuntu
+     ```
 
    - **For Debian**:
-
-      ```shell
-      https://pkgs.nginx.com/plus/R33/debian
-      ```
+     ```shell
+     https://pkgs.nginx.com/plus/R33/debian
+     ```
 
 3. Save the changes and exit.
 
